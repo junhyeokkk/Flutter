@@ -1,3 +1,15 @@
+// 루트 Gradle 파일
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin 버전
+        classpath 'com.android.tools.build:gradle:8.0.2'
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -9,10 +21,12 @@ rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// Clean task 정의
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

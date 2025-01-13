@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_recipe_app/exe01/recipe_list_item.dart';
+import 'package:flutter_recipe_app/exe01/recipe_menu.dart';
 import 'package:flutter_recipe_app/exe01/recipe_title.dart';
 
 void main() {
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // 디버그 배너 없애기
-      theme: ThemeData(fontFamily: 'PatuaOne-Regular.ttf'),
+      theme: ThemeData(fontFamily: 'PatuaOne'),
       home: RecipePage(),
     );
   }
@@ -29,16 +31,27 @@ class RecipePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildRecipeAppBar(),
-      body: ListView(
-        // 스크롤 위젯
-        children: [
-          // 타이틀
-          RecipeTitle()
-          // 메뉴
-          // 레시피 아이템
-          // 레시피 아이템
-          // 레시피 아이템
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: ListView(
+          // 스크롤 위젯
+          children: [
+            // 타이틀
+            RecipeTitle(),
+            SizedBox(height: 10),
+            // 메뉴
+            RecipeMenu(),
+            SizedBox(height: 10),
+            // 레시피 아이템
+            RecipeItem('coffee.jpeg', 'Made Coffee', 'Have you ever ....'),
+            SizedBox(height: 10),
+            // 레시피 아이템
+            RecipeItem('pizza.jpeg', 'Made Buger', 'Have you ever ....'),
+            SizedBox(height: 10),
+            // 레시피 아이템
+            RecipeItem('burger.jpeg', 'Made Pizza', 'Have you ever ....'),
+          ],
+        ),
       ),
     );
   }
